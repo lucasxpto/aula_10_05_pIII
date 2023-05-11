@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block titulo %} Login {% endblock %}
+
+{% block conteudo %}
+<section data-bs-version="5.1" class="features16 cid-tzVjbxlXj9" id="features17-6">
+
+    <div class="container">
+        <div class="content-wrapper">
+            <div class="row align-items-center">
+                <div class="col-12 col-lg-8">
+                    <div class="text-wrapper">
+                        <h6 class="card-title mbr-fonts-style display-5">
+                            <strong>Login</strong>
+                        </h6>
+                        <form class="form form-vertical" action="{% url 'loginuser' %}" method="post">
+                            {% csrf_token %}
+
+
+                            {% if messages %}
+                            {% for message in messages %}
+                            <div class="alert alert-danger" role="alert">
+                                {{ message }}
+                            </div>
+                            {% endfor %}
+                            {% endif %}
+
+
+                            <div class="mb-3">
+
+                                <label for="username" class="form-label">Usuário:</label>
+                                <input type="text" class="form-control" name="username" id="username">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Senha:</label>
+                                <input type="password" class="form-control" name="password" id="password">
+                            </div>
+
+                            <div>
+                                <input class="btn btn-primary" type="submit" value="Entrar">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

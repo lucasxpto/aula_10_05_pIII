@@ -1,17 +1,38 @@
-  <section data-bs-version="5.1" class="header2 cid-tzVgfOnXBf mbr-parallax-background" id="header2-0">
+<section data-bs-version="5.1" class="header2 cid-tzVgfOnXBf mbr-parallax-background" id="header2-0">
 
 
     <div class="mbr-overlay" style="opacity: 0.8; background-color: rgb(255, 255, 255);"></div>
 
     <div class="container">
         <div class="mbr-section-btn align-right ">
-                        <a class="btn btn-primary display-6"
-                           href="/">&#x1F3E0; Home</a>
+
+            <div class="row">
+
+                <div class="col d-flex flex-row-reverse">
+                    <a class="btn btn-primary display-6"
+                       href="/">&#x1F3E0; Home</a>
+
+                    {% if user.is_anonymous %}
+
+                    <a class="btn btn-primary display-6" href="{% url 'cadusuario' %}">Cadastre-se!</a>
+                    <a class="btn btn-primary display-6" href="{% url 'loginuser' %}">Entre</a>
+
+                    {% else %}
+                    <a class="btn btn-primary display-6" href="{% url 'logoutuser' %}">Sair</a>
+                    <span class="btn btn-primary display-6">{{ user.username }}
+
+                        </span>
+
+
+                    {% endif %}
+                </div>
+
+            </div>
+
         </div>
         <div class="row">
-            <div class="col-12 col-lg-7">
+            <div class="col-8 col-lg-10">
                 <h1 class="mbr-section-title mbr-fonts-style mb-4 display-1"><strong>Blog do Marcos</strong></h1>
-
             </div>
         </div>
     </div>

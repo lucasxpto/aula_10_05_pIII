@@ -13,13 +13,38 @@
                         <h6 class="card-title mbr-fonts-style display-5">
                             <strong>Comentando Post {{ post.titulo }}</strong>
                         </h6>
+                        {% if user.is_authenticated %}
                         <form class="form form-vertical" action="" method="post">
                             {% csrf_token %}
-                            {{ form.as_div }}
+
+                            <div class="mb-3">
+                                <label for="nome" class="form-label">Nome:</label>
+                                <input type="text" class="form-control" name="nome" id="nome"
+                                       value="{{ user.username }}" readonly>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="email" class="form-label">E-mail:</label>
+                                <input type="text" class="form-control" name="email" id="email"
+                                       value="{{ user.email }}" readonly>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="texto" class="form-label">Mensagem:</label>
+                                <textarea name="texto" class="form-control" id="texto" rows="3"></textarea>
+                            </div>
+
                             <div>
                                 <input class="btn btn-primary" type="submit" value="Enviar">
                             </div>
                         </form>
+                        {% else %}
+
+                        <p>Somente usuário logado podem comentar os posts.</p>
+
+                        <a href="{%url 'cadusuario' %}">Cadastrar</a> | <a href="{%url 'loginuser'%}">Entrar</a>
+
+                        {% endif %}
                     </div>
                 </div>
             </div>
