@@ -72,7 +72,7 @@ class FormContatoView(FormView):
         return super(FormContatoView, self).form_invalid(form)
 
 
-class ComentarioCreateView(CreateView):
+class ComentarioCreateView(LoginRequiredMixin, CreateView):
     template_name = 'blog/post/comentarios.html'
     form_class = ComentModelForm
 
